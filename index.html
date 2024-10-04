@@ -75,7 +75,39 @@
     </div>
     <p id="tricks" >48</p>
     <script>
-        var answer = "3B";
+                // Function to display the pop-up banner
+        function showBanner() {
+            const banner = document.getElementById('popup-banner');
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'block';
+            banner.style.display = 'block';
+        }
+
+        // Function to handle the dismissal of the banner
+        function dismissBanner() {
+            const banner = document.getElementById('popup-banner');
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+            banner.style.display = 'none';
+            onBannerDismissed();
+        }
+
+        // Function to be called when the banner is dismissed
+        function onBannerDismissed() {
+            console.log('Banner dismissed');
+            const tricky = document.getElementById('tricks');
+            document.cookie = "treat=cookies"+tricky.textContent;
+            tricky.textContent = "🍬";
+
+        }
+
+        function checkAns(){
+            return (document.cookie.split('=')[1]);
+        }
+
+        // Show the banner after a delay (e.g., 3 seconds)
+        setTimeout(showBanner, 500);
+        //var answer = "3B";
         const p = document.querySelector('p');
         const add = document.querySelector('#add');
         const subtract = document.querySelector('#subtract');
